@@ -1,0 +1,11 @@
+# Eclipse stuff:
+
+.settings/
+.project
+.classpath
+.springBeans
+
+.DS_Store
+
+# Maven build target:
+target/
