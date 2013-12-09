@@ -1,4 +1,4 @@
-package uk.co.eleusis.foodshop.data;
+package uk.co.eleusis.deptstore.data;
 
 import java.io.Serializable;
 
@@ -8,35 +8,35 @@ import javax.persistence.Id;
 import org.springframework.hateoas.ResourceSupport;
 
 @Entity
-public class FoodType extends ResourceSupport implements Serializable
+public class Department extends ResourceSupport implements Serializable
 {
 	private static final long serialVersionUID = -7095315873742997482L;
 
 	@Id
-	private String type;
+	private String name;
 	
-	public FoodType()
+	public Department()
 	{
 		
 	}
 	
-	public FoodType(String type)
+	public Department(String name)
 	{
-		this.type = type;
+		this.name = name;
 	}
 
 	/////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	// SETTERS / GETTERS
 	
-	public String getType() 
+	public String getName() 
 	{
-		return type;
+		return name;
 	}
 
-	public void setType(String type) 
+	public void setName(String name) 
 	{
-		this.type = type;
+		this.name = name;
 	}
 
 	

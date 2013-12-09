@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-	<context:component-scan base-package="uk.co.eleusis.foodshop.rest" />
+	<context:component-scan base-package="uk.co.eleusis.deptstore.rest" />
 
 	<mvc:annotation-driven />
 

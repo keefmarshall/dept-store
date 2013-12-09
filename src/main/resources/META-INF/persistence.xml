@@ -5,10 +5,10 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
  		http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
-	<persistence-unit name="foodshopPU" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="deptstorePU" transaction-type="RESOURCE_LOCAL">
 		<provider>com.objectdb.jpa.Provider</provider>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="$objectdb/db/foodshop.odb" />
+			<property name="javax.persistence.jdbc.url" value="$objectdb/db/deptstore.odb" />
 			<property name="javax.persistence.jdbc.user" value="admin" />
 			<property name="javax.persistence.jdbc.password" value="admin" />
 		</properties>

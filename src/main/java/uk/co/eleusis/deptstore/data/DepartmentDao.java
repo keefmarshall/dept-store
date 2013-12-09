@@ -1,4 +1,4 @@
-package uk.co.eleusis.foodshop.data;
+package uk.co.eleusis.deptstore.data;
 
 import java.util.List;
 
@@ -9,35 +9,40 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * Data access for FoodType object
+ * 
+ * @author keithm
+ *
+ */
 @Component
-public class FoodDao 
+public class DepartmentDao 
 {
     // Injected database connection:
     @PersistenceContext private EntityManager em;
 	 
     @Transactional
-    public void save(Food food)
+    public void save(Department department)
     {
-    	em.persist(food);
+    	em.persist(department);
     }
 
     @Transactional
-    public List<Food> getAll()
+    public List<Department> getAll()
     {
-    	TypedQuery<Food> query = em.createQuery(
-    			"SELECT f FROM Food f ORDER BY f.name", Food.class);
+    	TypedQuery<Department> query = em.createQuery(
+    			"SELECT d FROM Department d ORDER BY d.name", Department.class);
     	
     	return query.getResultList();
     }
     
     @Transactional
-    public Food get(String name)
+    public Department get(String name)
     {
-    	TypedQuery<Food> query = em.createQuery(
-    			"SELECT f FROM Food f WHERE f.type = :type", Food.class);
+    	TypedQuery<Department> query = em.createQuery(
+    			"SELECT d FROM Department d WHERE d.name = :name", Department.class);
     	query.setParameter("name", name);
     	
     	return query.getSingleResult();
     }
-
 }

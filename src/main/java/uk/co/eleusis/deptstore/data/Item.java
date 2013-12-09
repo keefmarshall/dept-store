@@ -1,4 +1,4 @@
-package uk.co.eleusis.foodshop.data;
+package uk.co.eleusis.deptstore.data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,21 +7,21 @@ import javax.persistence.ManyToOne;
 import org.springframework.hateoas.ResourceSupport;
 
 @Entity
-public class Food extends ResourceSupport
+public class Item extends ResourceSupport
 {
 	@Id
 	private String name;
 	
 	@ManyToOne
-	private FoodType type;
+	private Department department;
 
-	public Food() {}
+	public Item() {}
 	
 	
-	public Food(String name, FoodType type) 
+	public Item(String name, Department department) 
 	{
 		this.name = name;
-		this.type = type;
+		this.department = department;
 	}
 
 
@@ -37,11 +37,11 @@ public class Food extends ResourceSupport
 		this.name = name;
 	}
 
-	public FoodType getType() {
-		return type;
+	public Department getDepartment() {
+		return department;
 	}
 
-	public void setType(FoodType type) {
-		this.type = type;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 }
