@@ -1,5 +1,7 @@
 package uk.co.eleusis.deptstore.config;
 
+import java.util.Arrays;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +17,6 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
 /**
@@ -34,7 +35,6 @@ public class WebConfig extends WebMvcConfigurerAdapter
 	@Override
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) 
 	{
-		configurer.favorPathExtension(false).favorParameter(true);
 		configurer.mediaTypes(ImmutableMap.of(
 				"json", MediaType.APPLICATION_JSON,
 				"html", MediaType.TEXT_HTML
@@ -45,8 +45,8 @@ public class WebConfig extends WebMvcConfigurerAdapter
 	public ContentNegotiatingViewResolver contentNegotiatingViewResolver()
 	{
 		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
-		resolver.setViewResolvers(ImmutableList.of(urlBasedViewResolver()));
-		resolver.setDefaultViews(ImmutableList.of(mappingJacksonJsonView()));
+		resolver.setViewResolvers(Arrays.asList(urlBasedViewResolver()));
+		resolver.setDefaultViews(Arrays.asList(mappingJacksonJsonView()));
 		return resolver;
 	}
 
