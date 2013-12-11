@@ -65,6 +65,7 @@ public class WebConfig extends WebMvcConfigurerAdapter
 	{
 		MappingJacksonJsonView jsonView = new MappingJacksonJsonView();
 		jsonView.setExtractValueFromSingleKeyModel(true);
+		jsonView.setPrettyPrint(true);
 		return jsonView;
 	}
 }
