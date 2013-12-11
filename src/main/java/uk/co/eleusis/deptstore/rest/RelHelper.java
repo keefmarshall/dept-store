@@ -23,15 +23,31 @@ public class RelHelper
 
 	public void setSelfRel(Department dept)
 	{
-		dept.add(entityLinks.linkToSingleResource(Department.class, dept.getName()));
+		// check if it already has a self-rel:
+		if (!dept.hasLink("self"))
+		{
+			dept.add(entityLinks.linkToSingleResource(Department.class, dept.getName()));
+		}
 	}
 
+	public void setItemsRel(Department dept)
+	{
+		if (!dept.hasLink("items"))
+		{
+			dept.add(linkTo(ItemsByDepartmentRestController.class, dept.getName())
+					.withRel("items"));
+		}
+	}
+	
 	public void setSelfRel(Item item)
 	{
 		setSelfRel(item.getDepartment());
-		//item.add(entityLinks.linkToSingleResource(Item.class, item.getName()));
-		item.add(linkTo(ItemsByDepartmentRestController.class, item.getDepartment().getName()
-				).slash(item.getName()).withSelfRel());
+		if (!item.hasLink("self"))
+		{
+			//item.add(entityLinks.linkToSingleResource(Item.class, item.getName()));
+			item.add(linkTo(ItemsByDepartmentRestController.class, item.getDepartment().getName()
+					).slash(item.getName()).withSelfRel());
+		}
 	}
 
 }

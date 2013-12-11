@@ -35,6 +35,7 @@ public class DepartmentsRestController
 	{
 		Department dept = departmentDao.get(id);
 		relHelper.setSelfRel(dept);
+		relHelper.setItemsRel(dept);
 		return dept;
 	}
 
