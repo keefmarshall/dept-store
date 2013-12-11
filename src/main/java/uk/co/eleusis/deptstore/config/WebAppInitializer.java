@@ -31,7 +31,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected String[] getServletMappings() 
     {
-        return new String[] { "/shop/*" };
+        return new String[] { "/*" };
     }
     
     // Log4J config:
