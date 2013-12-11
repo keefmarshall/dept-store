@@ -41,6 +41,12 @@ public class ItemDao
     }
 
     @Transactional
+    public void delete(String name)
+    {
+    	em.remove(get(name));
+    }
+    
+    @Transactional
     public List<Item> getByDepartment(Department department)
     {
     	TypedQuery<Item> query = em.createQuery(

@@ -30,8 +30,7 @@ public class RelHelper
 	{
 		setSelfRel(item.getDepartment());
 		//item.add(entityLinks.linkToSingleResource(Item.class, item.getName()));
-		item.add(linkTo(
-					ItemsByDepartmentRestController.class, item.getDepartment().getName()
+		item.add(linkTo(ItemsByDepartmentRestController.class, item.getDepartment().getName()
 				).slash(item.getName()).withSelfRel());
 	}
 

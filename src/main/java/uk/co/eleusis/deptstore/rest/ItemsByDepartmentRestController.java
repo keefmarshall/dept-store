@@ -30,6 +30,12 @@ public class ItemsByDepartmentRestController
 		return item;
 	}
 
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE, produces="application/json")
+	public void deleteItem(@PathVariable String id)
+	{
+		itemDao.delete(id);
+	}
+
 	@RequestMapping(method=RequestMethod.GET, produces="application/json")
 	public List<Item> getItems(@PathVariable Department department)
 	{
