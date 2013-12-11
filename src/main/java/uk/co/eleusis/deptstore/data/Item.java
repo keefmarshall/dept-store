@@ -15,11 +15,14 @@ public class Item extends ResourceSupport
 	@ManyToOne
 	private Department department;
 
-	public Item() {}
+	public Item() 
+	{
+	}
 	
 	
 	public Item(String name, Department department) 
 	{
+		super();
 		this.name = name;
 		this.department = department;
 	}

@@ -1,7 +1,5 @@
 package uk.co.eleusis.deptstore.rest;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
-
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -27,14 +25,16 @@ public class DepartmentsRestController
 	
 	@Autowired DepartmentDao departmentDao;
 	@Autowired ItemDao itemDao;
+
+	@Autowired RelHelper relHelper;
 	
-	@RequestMapping(value = "/{department}", 
+	@RequestMapping(value = "/{id}", 
 			method=RequestMethod.GET,
 			produces="application/json")
-	public Department getDepartment(@PathVariable String department)
+	public Department getDepartment(@PathVariable String id)
 	{
-		Department dept = departmentDao.get(department);
-		setSelfRel(dept);
+		Department dept = departmentDao.get(id);
+		relHelper.setSelfRel(dept);
 		return dept;
 	}
 
@@ -44,7 +44,7 @@ public class DepartmentsRestController
 		List<Department> departments = departmentDao.getAll();
 		for (Department dept : departments)
 		{
-			setSelfRel(dept);
+			relHelper.setSelfRel(dept);
 		}
 		return departments;
 	}
@@ -55,17 +55,8 @@ public class DepartmentsRestController
 	public Department addDepartment(@RequestBody Department department)
 	{
 		departmentDao.save(department);
+		relHelper.setSelfRel(department);
 		return department;
 	}
 	
-	// TODO: /departments/electricals/items/television etc
-	
-	/////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	// PRIVATE METHODS
-	
-	private void setSelfRel(Department ft)
-	{
-		ft.add(linkTo(this.getClass()).slash(ft.getName()).withSelfRel());
-	}
 }

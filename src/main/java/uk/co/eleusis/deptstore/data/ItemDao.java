@@ -34,10 +34,19 @@ public class ItemDao
     public Item get(String name)
     {
     	TypedQuery<Item> query = em.createQuery(
-    			"SELECT i FROM Item i WHERE i.type = :type", Item.class);
+    			"SELECT i FROM Item i WHERE i.name = :name", Item.class);
     	query.setParameter("name", name);
     	
     	return query.getSingleResult();
     }
 
+    @Transactional
+    public List<Item> getByDepartment(Department department)
+    {
+    	TypedQuery<Item> query = em.createQuery(
+    			"SELECT i FROM Item i WHERE i.department = :department", Item.class);
+    	query.setParameter("department", department);
+    	
+    	return query.getResultList();
+    }
 }
