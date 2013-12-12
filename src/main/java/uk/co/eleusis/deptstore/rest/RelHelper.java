@@ -44,7 +44,10 @@ public class RelHelper
 		setSelfRel(item.getDepartment());
 		if (!item.hasLink("self"))
 		{
+			// sadly this doesn't work due to the need for a department ID:
 			//item.add(entityLinks.linkToSingleResource(Item.class, item.getName()));
+			//
+			// So we have to do it the long way round:
 			item.add(linkTo(ItemsByDepartmentRestController.class, item.getDepartment().getName()
 					).slash(item.getName()).withSelfRel());
 		}
